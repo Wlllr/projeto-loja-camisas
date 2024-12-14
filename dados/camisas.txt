@@ -1,0 +1,50 @@
+26,Camisa Polo Masculina com Detalhe Contrastante,100.28
+3,Camisa Polo Masculina com Detalhe Contrastante,106.84
+18,Camisa Feminina Estampada em Viscose,53.43
+25,Camisa Casual Feminina com Gola V,68.63
+39,Camisa Infantil Estampada de Animais,135.08
+9,Camisa Xadrez Flanelada Masculina,139.99
+7,Camisa Infantil Estampada de Animais,114.85
+36,Camisa Social Masculina Slim Fit,113.64
+37,Camisa de Linho Unissex com Bolsos Frontais,48.25
+46,Camisa Jeans Unissex com Lavagem Estonada,70.07
+34,Camisa Jeans Unissex com Lavagem Estonada,136.09
+16,Camisa Feminina Estampada em Viscose,57.78
+29,Camisa de Linho Unissex com Bolsos Frontais,91.14
+27,Camisa Jeans Unissex com Lavagem Estonada,118.64
+19,Camisa Casual Feminina com Gola V,144.92
+23,Camisa de Linho Unissex com Bolsos Frontais,141.56
+40,Camisa Xadrez Flanelada Masculina,144.55
+20,Camisa Masculina Manga Longa em Algodão,80.45
+47,Camisa Infantil Estampada de Animais,60.8
+12,Camisa de Linho Unissex com Bolsos Frontais,81.7
+4,Camisa Social Masculina Slim Fit,86.78
+32,Camisa Casual Feminina com Gola V,144.74
+48,Camisa Social Masculina Slim Fit,136.42
+13,Camisa Casual Feminina com Gola V,81.5
+10,Camisa Masculina Manga Longa em Algodão,96.58
+21,Camisa Feminina Estampada em Viscose,141.66
+1,Camisa Infantil Estampada de Animais,138.28
+45,Camisa Social Masculina Slim Fit,37.36
+44,Camisa Xadrez Flanelada Masculina,75.0
+2,Camisa Xadrez Flanelada Masculina,135.32
+11,Camisa Casual Feminina com Gola V,74.5
+6,Camisa Jeans Unissex com Lavagem Estonada,88.86
+43,Camisa de Linho Unissex com Bolsos Frontais,56.75
+15,Camisa Polo Masculina com Detalhe Contrastante,77.59
+22,Camisa Masculina Manga Longa em Algodão,51.07
+17,Camisa Polo Masculina com Detalhe Contrastante,30.37
+50,Camisa Jeans Unissex com Lavagem Estonada,54.15
+8,Camisa Jeans Unissex com Lavagem Estonada,67.35
+38,Camisa Feminina Manga Curta com Botões,130.4
+35,Camisa Social Masculina Slim Fit,134.33
+28,Camisa Infantil Estampada de Animais,66.91
+33,Camisa Social Masculina Slim Fit,63.3
+14,Camisa Social Masculina Slim Fit,131.03
+49,Camisa de Linho Unissex com Bolsos Frontais,134.48
+42,Camisa Masculina Manga Longa em Algodão,87.58
+31,Camisa Masculina Manga Longa em Algodão,127.58
+24,Camisa Social Masculina Slim Fit,104.7
+5,Camisa Infantil Estampada de Animais,113.58
+30,Camisa Social Masculina Slim Fit,87.94
+41,Camisa de Linho Unissex com Bolsos Frontais,133.53
