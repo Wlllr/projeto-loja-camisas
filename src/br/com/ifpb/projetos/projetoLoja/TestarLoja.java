@@ -10,6 +10,5 @@ public class TestarLoja {
         catalogo.removerCamisa();
         catalogo.buscarCamisa();
         catalogo.listarCamisas();
-
     }
 }
