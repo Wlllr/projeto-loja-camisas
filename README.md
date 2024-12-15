@@ -20,3 +20,5 @@ e processamento para redimensionar todos esses dados, o que pode ocasionar um tr
 Em resumo, vantagens (quantidade de dados conhecida) o redimensionamento dinâmico, escalabilidade, aplicabilidade, fácil de manipular, a ordem de disposição dos dados não faz diferença.
 Desvantagens se a quantidade de dados for desconhecida, havendo múltiplas inserções e remoções, no ato de se redimensionar ocasionará um tráfego muito grande 
 gerando assim um maior processamento desses dados tornando lento o programa.
+
+OBS: Ainda falta refatorar esse código. Irei fazer isso em seguida
