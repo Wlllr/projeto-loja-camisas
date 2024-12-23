@@ -6,9 +6,9 @@ public class TestarLoja {
     public static void main(String[] args) throws IOException {
         Catalogo catalogo = new Catalogo();
 
-        catalogo.adicionarCamisa();
-        catalogo.removerCamisa();
-        catalogo.buscarCamisa();
-        catalogo.listarCamisas();
+        catalogo.perguntaSeDesejaCamisa();
+        catalogo.lacoRemocaoCamisa();
+        catalogo.lacoBuscarCamisa();
+        catalogo.lacoListagemCamisa();
     }
 }

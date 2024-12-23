@@ -1,169 +1,223 @@
 package br.com.ifpb.projetos.projetoLoja;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static java.lang.Double.parseDouble;
+import static java.lang.Integer.parseInt;
+import static java.nio.file.Files.readAllLines;
+import static java.nio.file.Path.of;
+
 
 public class Catalogo {
     //cria o arraylist do obj Camisa
-    private final ArrayList<Camisa> listaCamisas = new ArrayList<>();
+    private final ArrayList<Camisa> listaDeCamisas = new ArrayList<>();
     private final Scanner teclado = new Scanner(System.in);
 
     //construtor
 
-    Catalogo() throws IOException {
-        List<String> listaCamisasTXT = Files.readAllLines(Path.of("dados/camisas.txt"));
+    public Catalogo() throws IOException {
+        List<String> cargaCamisas = readAllLines(of("dados/camisas.txt"));
 
-        for ( String cadaListaCamisasTXT : listaCamisasTXT) {
-            String[] partes = cadaListaCamisasTXT.split(",");
+        construirListaCamisas(cargaCamisas);
+    }
 
-            listaCamisas.add(new Camisa(Integer.parseInt(partes[0] ), partes[1], Double.parseDouble(partes[2])));
+    private void construirListaCamisas(List<String> fromCargaCamisas) {
+        for ( String cadaLinha : fromCargaCamisas) {
+            String[] arrayPartesCamisa = cadaLinha.split(",");
+
+            criarCamisa(arrayPartesCamisa);
         }
     }
 
+    private void criarCamisa(String[] fromArrayPartesCamisa) {
+        listaDeCamisas.add(new Camisa(parseInt(fromArrayPartesCamisa[0]), fromArrayPartesCamisa[1], parseDouble(fromArrayPartesCamisa[2])));
+    }
 
     //permite voce adicionar quantas camisas quiser
-    public void adicionarCamisa(){
+    public void perguntaSeDesejaCamisa(){
         boolean continuar;
         do {
             System.out.println("Deseja adicionar uma camisa a lista? (true/false)");
             continuar = teclado.nextBoolean();
-
             if (!continuar){
-                break;
+                return;
             }
 
-            System.out.println("Atençao, apois digitar cada informacao aperte Enter.");
-            System.out.println("Para adicionar uma camisa na Lista de Camisas " +
-            "informe o codigo(int), descricao(String), preco(double COM VIRGULA): ");
-            int cod = teclado.nextInt();
-            teclado.nextLine();
-            String desc = teclado.nextLine();
-            double preco = teclado.nextDouble();
-
-            adicionarCamisaNaLista(cod, desc, preco);
-
+            montarNovaCamisa();
         }
         while (continuar);
     }
 
+    private void montarNovaCamisa() {
+        System.out.println("Atençao, apois digitar cada informacao aperte Enter.");
+        System.out.println("Para adicionar uma camisa na Lista de Camisas " +
+        "informe o codigo(int), descricao(String), preco(double COM VIRGULA): ");
 
-    public void removerCamisa(){
-        boolean continuar = true;
-
-        while (continuar) {
-            System.out.println("Deseja remover alguma camisa da Lista de Camisas? (true/false)");
-            continuar = teclado.nextBoolean();
-
-            if (!continuar){
-                break;
-            }
-
-            System.out.println("Informe o codigo da camisa a ser removida: ");
-            int remover = teclado.nextInt();
-
-            boolean resultado = removerCamisaDaLista(remover);
-            if (resultado) {
-                System.out.println("Camisa removida com sucesso!");
-            } else {
-                System.out.println("Camisa nao encontrada.");
-            }
-
-        }
-
+        criarCamisa();
     }
 
-    public void buscarCamisa(){
+    private void criarCamisa() {
+        int cod = teclado.nextInt();
+        teclado.nextLine();
+        String desc = teclado.nextLine();
+        double preco = teclado.nextDouble();
+
+        //teclado.nextInt(), teclado.nextLine(), teclado.nextDouble()
+        adicionarCamisaNaLista(cod, desc, preco);
+    }
+
+
+    public void lacoRemocaoCamisa(){
         boolean continuar = true;
-
         while (continuar) {
-            System.out.println("Deseja realizar a busca por uma camisa especifica em nosso catalogo? (true/false)");
-            continuar = teclado.nextBoolean();
+            continuar = perguntaParaIniciar();
 
-            if (!continuar) {
-                break;
-            }
+            if (!continuar) break;
 
-            System.out.println("Informe o codigo da camisa que deseja buscar: ");
-            int codigoBusca = teclado.nextInt();
-
-            Camisa encontrada = buscarCamisaNaLista(codigoBusca);
-
-            if (encontrada != null){
-                System.out.println("Camisa: " + encontrada);
-            } else {
-                System.out.println("Camisa nao encontrada.");
-            }
-
+            verificarRemocaoCamisa();
         }
     }
 
-    void listarCamisas(){
-        boolean continuar = true;
+    private boolean perguntaParaIniciar() {
+        boolean continuar;
+        System.out.println("Deseja remover alguma camisa da Lista de Camisas? (true/false)");
+        continuar = teclado.nextBoolean();
+        return continuar;
+    }
 
+    private void verificarRemocaoCamisa() {
+        System.out.println("Informe o codigo da camisa a ser removida: ");
+        int remover = teclado.nextInt();
+
+        removerCamisa(remover);
+    }
+
+    private void removerCamisa(int remover) {
+        boolean resultado = removerCamisaDaLista(remover);
+        //operador ternario
+        System.out.println(resultado ? "Camisa removida com sucesso!" : "Camisa nao encontrada.");
+    }
+
+    public void lacoBuscarCamisa(){
+        boolean continuar = true;
+        while (true) {
+            continuar = realizarOutraBusca();
+            if (!continuar) return;
+
+            resultadoBuscaCamisa();
+        }
+    }
+
+    private boolean realizarOutraBusca() {
+        boolean continuar;
+        System.out.println("Deseja realizar a busca por uma camisa especifica em nosso catalogo? (true/false)");
+        continuar = teclado.nextBoolean();
+        return continuar;
+    }
+
+    private void resultadoBuscaCamisa() {
+        int codigoBusca = codigoParaBusca();
+        var encontrada = buscarCamisaNaLista(codigoBusca);
+
+        outPutDaBusca(encontrada);
+    }
+
+    private int codigoParaBusca() {
+        System.out.println("Informe o codigo da camisa que deseja buscar: ");
+        int codigoBusca = teclado.nextInt();
+        return codigoBusca;
+    }
+
+    private static void outPutDaBusca(Camisa encontrada) {
+        if (encontrada != null){
+            System.out.println("Camisa: " + encontrada);
+        } else {
+            System.out.println("Camisa nao encontrada.");
+        }
+    }
+
+    void lacoListagemCamisa(){
+        boolean continuar = true;
         while (continuar){
-            System.out.println("Deseja visualizar a lista completa de camisas em nosso catalogo? (true/false)");
-            continuar = teclado.nextBoolean();
+            continuar = respostaParaFazerListagem();
 
-            if (!continuar){
-                System.out.println("Obrigado por nos acessar!");
-                break;
-            } else if (continuar) {
-                imprimirCamisasDaLista();
-                System.out.println("Obrigado por visitar nosso catalogo!");
-                break;
-            }
+            if (outPutListagemCamisa(continuar)) return;
 
         }
 
+    }
+
+    private boolean respostaParaFazerListagem() {
+        boolean continuar;
+        System.out.println("Deseja visualizar a lista completa de camisas em nosso catalogo? (true/false)");
+        continuar = teclado.nextBoolean();
+        return continuar;
+    }
+
+    private boolean outPutListagemCamisa(boolean continuar) {
+        if (!continuar){
+            System.out.println("Obrigado por nos acessar!");
+            return true;
+        } else if (continuar) {
+            imprimirCamisasDaLista();
+            System.out.println("Obrigado por visitar nosso catalogo!");
+            return true;
+        }
+        return false;
     }
 
     //adiciona camisa
     void adicionarCamisaNaLista(int cod, String descricao, double preco){
         //percore a lista de camisa
-        for ( Camisa cadaCamisa : listaCamisas) {
+        for ( Camisa cadaCamisa : listaDeCamisas) {
             //compara se ja existe essa camisa
-            if ( cadaCamisa.getCod() == cod ){
-                return;
-            }
+            if (verificaExistenciaCamisa(cod, cadaCamisa)) return;
         }
-
         //senao, ele cria o obj ccamisa
-        listaCamisas.add(new Camisa(cod, descricao, preco));
+        listaDeCamisas.add(new Camisa(cod, descricao, preco));
 
+    }
+
+    private static boolean verificaExistenciaCamisa(int cod, Camisa cadaCamisa) {
+        if ( cadaCamisa.getCod() == cod){
+            return true;
+        }
+        return false;
     }
 
     //remove a camisa
     boolean removerCamisaDaLista(int cod){
         //percore a lista de camisas
-        for (Camisa cadaCamisa : listaCamisas){
+        for (Camisa cadaCamisa : listaDeCamisas){
             //verifica se essa camisa existe
-            if (cadaCamisa.getCod() == cod){
-                //remove a camisa da lista
-                listaCamisas.remove(cadaCamisa);
-                return true;
-            }
+            if (camisaParaRemocao(cod, cadaCamisa)) return true;
+        }
+        return false;
+    }
+
+    private boolean camisaParaRemocao(int cod, Camisa cadaCamisa) {
+        if (cadaCamisa.getCod() == cod){
+            //remove a camisa da lista
+            listaDeCamisas.remove(cadaCamisa);
+            return true;
         }
         return false;
     }
 
     Camisa buscarCamisaNaLista(int cod){
-        for (Camisa cadaCamisa : listaCamisas){
+        for (Camisa cadaCamisa : listaDeCamisas){
             if (cadaCamisa.getCod() == cod){
                 return cadaCamisa;
             }
         }
-
         return null;
     }
 
-
     void imprimirCamisasDaLista(){
-        for (Camisa cadaCamisa : listaCamisas){
+        for (Camisa cadaCamisa : listaDeCamisas){
             cadaCamisa.imprimirDados();
         }
     }
