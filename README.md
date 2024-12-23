@@ -1,7 +1,8 @@
 Essa foi uma pratica realizada no Laboratorio de programacao 03 do Instituto Federal da Paraiba (IFPB), da cadeira de Estrutura de Dados. 
 O desafio era implementar um programa Loja de Camisas que recebe uma base de Dados TXT, escolhendo a Estrutura de Dados mais adequada. E o porque dá escolha desta. 
-Para a concepção desse projeto eu realizei o design do Modelo Conceitual e Diagrama de Objetos seguindo o padrão UML, utilizando o Draw IO pode ser encontrado na pasta designConceitualObjetos deste mesmo repositôrio.
+Para a concepção desse projeto eu realizei o design do Modelo Conceitual e Diagrama de Objetos seguindo o padrão UML, utilizando a tecnologia Draw IO. 
 
+O SVG do modelo e diagrama ode ser encontrado na pasta designConceitualObjetos deste mesmo repositôrio.
 
 A estrutura de dados escolhida foi o Arraylist. Como evidenciado no enunciado, o catálogo não sofrerá múltiplas inserções e remoções de camisas 
 e também a ordem que esses dados serão dispostos não faz diferença. Por isso a escolha do Arraylist é apropriada, pois esta estrutura de dados 
@@ -19,3 +20,5 @@ e processamento para redimensionar todos esses dados, o que pode ocasionar um tr
 Em resumo, vantagens (quantidade de dados conhecida) o redimensionamento dinâmico, escalabilidade, aplicabilidade, fácil de manipular, a ordem de disposição dos dados não faz diferença.
 Desvantagens se a quantidade de dados for desconhecida, havendo múltiplas inserções e remoções, no ato de se redimensionar ocasionará um tráfego muito grande 
 gerando assim um maior processamento desses dados tornando lento o programa.
+
+OBS: Ainda falta refatorar esse código. Irei fazer isso em seguida
